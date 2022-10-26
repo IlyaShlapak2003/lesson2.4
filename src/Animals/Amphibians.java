@@ -1,5 +1,7 @@
 package Animals;
 
+import java.util.Objects;
+
 public class Amphibians extends Animals {
     private String livingEnvironment;
     private int timeOfSleep;
@@ -63,9 +65,20 @@ public class Amphibians extends Animals {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Amphibians that = (Amphibians) o;
+        return timeOfSleep == that.timeOfSleep && Objects.equals(livingEnvironment, that.livingEnvironment);
+    }
+
+
+    @Override
     public String toString() {
-        return "Amphibians{" +
-                "livingEnvironment='" + livingEnvironment + '\'' +
+        return "Amphibians{" +"name='" + getName() + '\'' +
+                ", age=" + getAge() +
+                " livingEnvironment='" + livingEnvironment + '\'' +
                 ", timeOfSleep=" + timeOfSleep +
                 '}';
     }
