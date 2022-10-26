@@ -2,6 +2,8 @@ package Animals;
 
 import Animals.Animals;
 
+import java.util.Objects;
+
 public abstract class Mammals extends Animals {
     private String livingEnvironment;
     private float travelSpeed;
@@ -46,6 +48,20 @@ public abstract class Mammals extends Animals {
     }
     public void walk(){
         System.out.println("Я гуляю по "+livingEnvironment);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Mammals mammals = (Mammals) o;
+        return Float.compare(mammals.travelSpeed, travelSpeed) == 0 && Objects.equals(livingEnvironment, mammals.livingEnvironment);
+    }
+
+    @Override
+    public int hashCode() {
+        return 0;
     }
 
     @Override

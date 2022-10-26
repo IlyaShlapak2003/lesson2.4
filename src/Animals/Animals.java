@@ -1,5 +1,7 @@
 package Animals;
 
+import java.util.Objects;
+
 public abstract class Animals {
     private String name;
     private int age;
@@ -36,6 +38,15 @@ public abstract class Animals {
     public abstract void eat();
     public abstract void move();
     public abstract void sleep();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Animals animals = (Animals) o;
+        return age == animals.age && Objects.equals(name, animals.name);
+    }
+
 
     @Override
     public String toString() {
